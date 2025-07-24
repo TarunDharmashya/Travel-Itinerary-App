@@ -8,6 +8,7 @@ interface Itinerary {
   _id: string;
   title: string;
   destination: string;
+  tripType?: string;
   startDate: string;
   endDate: string;
 }
@@ -40,6 +41,7 @@ export default function Dashboard() {
                 <tr className="bg-blue-100 text-blue-800">
                   <th className="py-4 px-6 text-left font-bold text-lg">Title</th>
                   <th className="py-4 px-6 text-left font-bold text-lg">Destination</th>
+                  <th className="py-4 px-6 text-left font-bold text-lg">Trip Type</th>
                   <th className="py-4 px-6 text-left font-bold text-lg">Start Date</th>
                   <th className="py-4 px-6 text-left font-bold text-lg">End Date</th>
                 </tr>
@@ -58,6 +60,7 @@ export default function Dashboard() {
                         </Link>
                       </td>
                       <td className="py-4 px-6 text-gray-900">{it.destination}</td>
+                      <td className="py-4 px-6 text-gray-900">{it.tripType}</td>
                       <td className="py-4 px-6 text-gray-900">{new Date(it.startDate).toLocaleDateString()}</td>
                       <td className="py-4 px-6 text-gray-900">{new Date(it.endDate).toLocaleDateString()}</td>
                     </tr>

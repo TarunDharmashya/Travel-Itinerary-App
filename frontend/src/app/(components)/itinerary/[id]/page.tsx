@@ -7,6 +7,7 @@ interface Itinerary {
   _id: string;
   title: string;
   destination: string;
+  tripType?: string;
   startDate: string;
   endDate: string;
 }
@@ -37,6 +38,7 @@ export default function ItineraryDetails() {
         <h1 className="text-3xl font-extrabold mb-8 text-blue-800">{itinerary.title}</h1>
         <div className="w-full mb-4">
           <p className="mb-2 text-gray-900 text-lg"><span className="font-semibold text-blue-700">Destination:</span> {itinerary.destination}</p>
+          <p className="mb-2 text-gray-900 text-lg"><span className="font-semibold text-blue-700">Trip Type:</span> {itinerary.tripType ?? "--"}</p>
           <p className="mb-2 text-gray-900 text-lg"><span className="font-semibold text-blue-700">From:</span> {new Date(itinerary.startDate).toLocaleDateString()}</p>
           <p className="mb-2 text-gray-900 text-lg"><span className="font-semibold text-blue-700">To:</span> {new Date(itinerary.endDate).toLocaleDateString()}</p>
         </div>

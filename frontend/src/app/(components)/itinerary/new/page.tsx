@@ -7,13 +7,15 @@ export default function NewItinerary() {
   const [title, setTitle] = useState('');
   const [destination, setDestination] = useState('');
   const [startDate, setStartDate] = useState('');
+  const [tripType, setTripType] = useState('');
   const [endDate, setEndDate] = useState('');
+  const tripTypes = ['Business', 'Leisure', 'Adventure', 'Cultural', 'Other'];
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await axiosInstance.post('/itineraries', { title, destination, startDate, endDate });
+      await axiosInstance.post('/itineraries', { title, destination,tripType, startDate, endDate });
       router.push('/dashboard');
     } catch (err) {
       alert('Failed to create itinerary');
@@ -37,6 +39,12 @@ export default function NewItinerary() {
           placeholder="Destination"
           className="block w-full mb-6 p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 text-lg placeholder-gray-700"
         />
+        <select onChange={(e) => setTripType(e.target.value)} value={tripType} className="block w-full mb-6 p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 text-lg">
+          <option value="">Select Trip Type</option>
+          {tripTypes.map((type) => (
+            <option key={type} value={type}>{type}</option>
+          ))}
+        </select>
         <input
           type="date"
           value={startDate}
